@@ -1,0 +1,19 @@
+import React from "react";
+import { Container, Table } from "react-bootstrap";
+const loanJS = require("loanjs");
+
+const AmoritizationTable = (props) => {
+  const { downPayment, interestRates, loanAmount, loanDuration } = props;
+  const principal = loanAmount - downPayment;
+
+  const monthsOfPayments = loanDuration * 12;
+  const loan = new loanJS.Loan(
+    principal,
+    monthsOfPayments,
+    interestRates,
+    false
+  );
+  console.log(loan);
+  const loanArray = Object.values(loan);
+  let principalPaidToDate = 0;
+};
