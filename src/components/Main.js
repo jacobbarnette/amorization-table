@@ -29,33 +29,33 @@ const Main = () => {
         <Container fluid>
           <Row className="text-center py-3">
             <Col>
-              {loanAmount - downPayment}
+              <span>${loanAmount - downPayment}</span>
               <p>Principal</p>
             </Col>
 
             <Col>
-              {monthlyPayment.toFixed(2)}
+              <span>${monthlyPayment.toFixed(2)}</span>
               <p>Monthly Payment</p>
             </Col>
           </Row>
           <Row className="text-center py-3">
             <Col>
-              {totalBalancePaid}
+              <span>${totalBalancePaid}</span>
               <p>Total Repaid</p>
             </Col>
 
             <Col>
-              {totalIntersetPaid}
+              <span> ${totalIntersetPaid}</span>
               <p>Total Interest Paid</p>
             </Col>
           </Row>
           <Row className="text-center py-3">
             <Col>
-              {downPayment}
+              <span> ${downPayment}</span>
               <p>Down Payment</p>
             </Col>
             <Col>
-              {((downPayment / loanAmount) * 100).toFixed(2)} %
+              <span> {((downPayment / loanAmount) * 100).toFixed(2)}%</span>
               <p>% of Down Payment</p>
             </Col>
           </Row>
@@ -66,7 +66,7 @@ const Main = () => {
         <Container fluid>
           <Row className="text-center py-3">
             <Col>
-              <p>{Number(loanAmount)}</p>
+              <p className="sliderText">${Number(loanAmount)}</p>
               <input
                 min="50000"
                 step="1000"
@@ -79,7 +79,7 @@ const Main = () => {
             </Col>
 
             <Col>
-              <p>{downPayment}</p>
+              <p className="sliderText">{downPayment}</p>
               <input
                 min="1000"
                 step="500"
@@ -93,21 +93,22 @@ const Main = () => {
           </Row>
           <Row className="text-center py-3">
             <Col>
-              <p>{loanDuration} years</p>
+              <p className="sliderText">{loanDuration} years</p>
               <input
                 step="1"
                 min="1"
+                type="range"
                 max="30"
                 value={loanDuration}
                 onChange={(e) => setLoanDuration(e.target.value)}
-                type="range"
               />
               <p>Duration of Loan</p>
             </Col>
 
             <Col>
-              <p>{interestRates} %</p>
+              <p className="sliderText">{interestRates}%</p>
               <input
+                className=""
                 min="1"
                 max="10"
                 step=".1"

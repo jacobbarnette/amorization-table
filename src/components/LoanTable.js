@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Table } from "react-bootstrap";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+
 import Barchart from "./Barchart";
 import Linechart from "./LineChart";
 const LoanTable = (props) => {
-  const { dataSchedule } = props;
+  const { dataSchedule, totalIntArr, totalPrincipleArr } = props;
+  console.log(totalPrincipleArr.length);
+  totalIntArr.map((total) => console.log(total));
 
   const data = {
     labels: dataSchedule.map((data) => {
@@ -33,6 +35,32 @@ const LoanTable = (props) => {
       },
     ],
   };
+  const data1 = {
+    labels: totalIntArr.map((total, i) => {
+      return `Year ${i}`;
+    }),
+
+    datasets: [
+      {
+        stack: "1",
+        label: "Interest Paid",
+        data: totalIntArr.map((total) => total),
+        backgroundColor: "rgba(255,99,132,0.2)",
+        borderColor: "rgba(255,99,132,1)",
+        borderWidth: 1,
+        hoverBackgroundColor: "rgba(255,99,132,0.4)",
+        hoverBorderColor: "rgba(255,99,132,1)",
+      },
+      {
+        label: "Principal Paid",
+        backgroundColor: "rgba(54, 162, 235, 0.2)",
+        borderColor: "rgba(54, 162, 235, 1)",
+        borderWidth: 1,
+        stack: "2",
+        data: totalPrincipleArr.map((data) => data),
+      },
+    ],
+  };
   const options = {
     responsive: true,
     interaction: {
@@ -49,8 +77,10 @@ const LoanTable = (props) => {
   };
   return (
     <Container>
-      <Barchart options={options} data={data} />
-      <Linechart options={options} data={data} />
+      <div className="chartContainer">
+        <Barchart options={options} data={data1} />
+        <Linechart options={options} data={data} />
+      </div>
       <section className="amoritizationTable">
         <h1 className="text-center py-3">Table</h1>
         <Table striped bordered hover>

@@ -11,11 +11,12 @@ const AmoritizationTable = (props) => {
     setTotalInterestPaid,
   } = props;
 
-  const totalPayments = loanDuration * 12;
   const principal = loanAmount - downPayment;
   let dataSchedule;
   let principleSum = 0;
   let interstSum = 0;
+  let totalIntArr = [];
+  let totalPrincipleArr = [];
   function computeSchedule(
     loan_amount,
     interest_rate,
@@ -45,46 +46,66 @@ const AmoritizationTable = (props) => {
       ];
       schedule.push(row);
       remaining -= principle;
-
-      //if (i % 12 === 0) {
-      //yearlyAmmountArr.push(principleSum);
-      //for (let i = 0; i < 30; i++) {
-      //if (yearlyAmmountArr[i] - yearlyAmmountArr[i - 1])
-      //   testArr.push(yearlyAmmountArr[i] - yearlyAmmountArr[i - 1]);
-      // }
-      // }
     }
     schedule.map((value) => {
       if (value[0] % 12 === 0) {
-        testArr.push(value[4]);
+        return testArr.push(value[4]);
       }
     });
-    for (let i = 1; i < testArr.length; i++) {
-      annualPrinciplePaid.push(testArr[i] - testArr[i - 1]);
+    for (let i = 0; i < testArr.length; i++) {
+      if (isNaN(testArr[i] - testArr[i - 1])) {
+        annualPrinciplePaid.push(0);
+      } else {
+        annualPrinciplePaid.push(testArr[i] - testArr[i - 1]);
+      }
+
+      annualIntersetPaid.filter((value) => {
+        if (!isNaN(value)) {
+          return value;
+        }
+      });
     }
 
     schedule.map((value) => {
       if (value[0] % 12 === 0) {
-        intArr.push(value[2]);
+        return intArr.push(value[2]);
       }
     });
-    for (let i = 1; i < intArr.length; i++) {
-      annualIntersetPaid.push(intArr[i] - intArr[i - 1]);
+    for (let i = 0; i < intArr.length; i++) {
+      if (isNaN(intArr[i] - intArr[i - 1])) {
+        annualIntersetPaid.push(0);
+      } else {
+        annualIntersetPaid.push(intArr[i] - intArr[i - 1]);
+      }
+
+      annualIntersetPaid.filter((value) => {
+        if (!isNaN(value)) {
+          return value;
+        }
+      });
     }
+    console.log(number_of_payments);
     dataSchedule = schedule;
-
-    let totalInterset = Number(schedule[359][2].toFixed(2));
+    totalPrincipleArr = annualPrinciplePaid;
+    totalIntArr = annualIntersetPaid;
+    let totalInterset = Number(schedule[number_of_payments - 1][2].toFixed(2));
     setTotalInterestPaid(totalInterset);
 
     setTotalBalancePaid(totalInterset + principal);
     console.log(annualPrinciplePaid, annualIntersetPaid);
-    return schedule;
+    return;
   }
 
   computeSchedule(principal, interestRates, 12, loanDuration, monthlyPayment);
+
   return (
     <div>
-      <LoanTable dataSchedule={dataSchedule} />
+      <LoanTable
+        loanDuration={loanDuration}
+        totalPrincipleArr={totalPrincipleArr}
+        totalIntArr={totalIntArr}
+        dataSchedule={dataSchedule}
+      />
     </div>
   );
 };
