@@ -71,18 +71,32 @@ const LoanTable = (props) => {
     plugins: {
       title: {
         display: true,
-        text: "Chart.js Line Chart - Multi Axis",
+        text: "Total Interset and Principle amounts over duration of loan",
+      },
+    },
+  };
+  const options1 = {
+    responsive: true,
+    interaction: {
+      intersect: false,
+    },
+    stacked: false,
+    spanGaps: true,
+    plugins: {
+      title: {
+        display: true,
+        text: "Interest and Principle Payments year to year",
       },
     },
   };
   return (
     <Container>
       <div className="chartContainer">
-        <Barchart options={options} data={data1} />
+        <Barchart options={options1} data={data1} />
         <Linechart options={options} data={data} />
       </div>
       <section className="amoritizationTable">
-        <h1 className="text-center py-3">Table</h1>
+        <h1 className="text-center py-3">Amorization Table</h1>
         <Table striped bordered hover>
           <tbody>
             <tr className="text-center">
