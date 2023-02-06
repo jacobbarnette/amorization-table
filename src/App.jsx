@@ -5,12 +5,14 @@ import Header from './components/Header';
 import Main from './components/Main'
 import AmoritizationTable from './components/AmoritizationTable'
 import './index.css'
+
+
 function App() {
   return (
     <>
     <Header />
     <Main />
-  
+    
     </>
    
    

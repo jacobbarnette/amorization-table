@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import AmoritizationTable from "./AmoritizationTable";
-import { useSelector, useDispatch } from "react-redux";
-import { addInterestSum } from "../features/mortgageSlice";
-const Main = () => {
-  const mortgage = useSelector((state) => state.mortgage);
-  const dispatch = useDispatch();
 
+const Main = () => {
   const [loanAmount, setLoanAmount] = useState("209900");
   const [downPayment, setDownPayment] = useState("20000");
   const [loanDuration, setLoanDuration] = useState("30");
@@ -44,12 +40,12 @@ const Main = () => {
           </Row>
           <Row className="text-center py-3">
             <Col>
-              {totalBalancePaid.toFixed(2)}
+              {totalBalancePaid}
               <p>Total Repaid</p>
             </Col>
 
             <Col>
-              {totalIntersetPaid.toFixed(2)}
+              {totalIntersetPaid}
               <p>Total Interest Paid</p>
             </Col>
           </Row>
