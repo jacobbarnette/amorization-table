@@ -108,6 +108,7 @@ const Main = () => {
             <Col>
               <p className="sliderText">{interestRates}%</p>
               <input
+                value={interestRates}
                 className=""
                 min="1"
                 max="10"
