@@ -9,11 +9,15 @@ h1 {
 }
 
 .chartContainer {
-  display: flex;
-  width: 50%;
-  padding: 1em 1em 1em 1em;
-  margin: 1em 1em;
+  margin: auto;
   gap: 2rem;
+  display: flex;
+  width: 90%;
+  height: 90%;
+}
+
+input {
+  width: 80%;
 }
 p {
   font-style: italic;
@@ -30,6 +34,22 @@ span {
   font-size: 1.5rem;
 }
 
-input {
-width: 100%;
+.table {}
+@media only screen and (max-width: 1024px) {
+
+ input {
+  width: 50%;
+  }
+
+  .chartContainer {
+    display: block;
+    margin: auto;
+  }
+
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+ 
 }

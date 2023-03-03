@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Table } from "react-bootstrap";
+import { Col, Container, Row, Table } from "react-bootstrap";
 
 import Barchart from "./Barchart";
 import Linechart from "./LineChart";
@@ -62,7 +62,8 @@ const LoanTable = (props) => {
     ],
   };
   const options = {
-    responsive: true,
+    responsive: false,
+    maintainAspectRatio: false,
     interaction: {
       intersect: false,
     },
@@ -76,7 +77,8 @@ const LoanTable = (props) => {
     },
   };
   const options1 = {
-    responsive: true,
+    responsive: false,
+    maintainAspectRatio: false,
     interaction: {
       intersect: false,
     },
@@ -90,14 +92,18 @@ const LoanTable = (props) => {
     },
   };
   return (
-    <Container>
-      <div className="chartContainer">
-        <Barchart options={options1} data={data1} />
-        <Linechart options={options} data={data} />
+    <Container fluid>
+      <div className="chartContainer ">
+        <Col className="col-lg-6 col-md-12">
+          <Barchart className="barchart" options={options1} data={data1} />
+        </Col>
+        <Col className="col-lg-6 col-md-12">
+          <Linechart className="linechart" options={options} data={data} />
+        </Col>
       </div>
       <section className="amoritizationTable">
-        <h1 className="text-center py-3">Amorization Table</h1>
-        <Table striped bordered hover>
+        <h1 className="text-center py-3">Amortization Table</h1>
+        <Table className="px-5 table " responsive striped bordered hover>
           <tbody>
             <tr className="text-center">
               <th>Month</th>
