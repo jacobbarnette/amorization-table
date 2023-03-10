@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
 import Barchart from "./Barchart";
 import Linechart from "./LineChart";
@@ -34,6 +35,17 @@ const LoanTable = (props) => {
         data: dataSchedule.map((data) => data[4]),
       },
     ],
+    plugins: {
+      datalabels: {
+        font: {
+          size: 12,
+          weight: "bold",
+        },
+        display: function (context) {
+          return context.chart.width > 768; // hide labels on small screens
+        },
+      },
+    },
   };
   const data1 = {
     labels: totalIntArr.map((total, i) => {
@@ -60,10 +72,21 @@ const LoanTable = (props) => {
         data: totalPrincipleArr.map((data) => data),
       },
     ],
+    plugins: {
+      datalabels: {
+        font: {
+          size: 12,
+          weight: "bold",
+        },
+        display: function (context) {
+          return context.chart.width > 768; // hide labels on small screens
+        },
+      },
+    },
   };
   const options = {
-    responsive: false,
-    maintainAspectRatio: false,
+    responsive: true,
+    maintainAspectRatio: true,
     interaction: {
       intersect: false,
     },
@@ -77,8 +100,8 @@ const LoanTable = (props) => {
     },
   };
   const options1 = {
-    responsive: false,
-    maintainAspectRatio: false,
+    responsive: true,
+    maintainAspectRatio: true,
     interaction: {
       intersect: false,
     },

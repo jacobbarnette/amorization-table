@@ -44,6 +44,7 @@ span {
   .chartContainer {
     display: block;
     margin: auto;
+    min-height: 50%;
   }
 
   h1 {
@@ -52,4 +53,15 @@ span {
   }
 
  
+}
+@media (min-width: 992px) {
+  .chartContainer {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .chartContainer{
+    justify-content: space-between;
+  }
 }
