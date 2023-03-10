@@ -24,4 +24,4 @@ Charts and Amortization Table
 
 - [React](https://reactjs.org/)
 - [React-Bootstrap](https://react-bootstrap.github.io/)
-- [ChartJS] - (https://www.chartjs.org/)
+- [ChartJS](https://www.chartjs.org/)
