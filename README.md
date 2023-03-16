@@ -1,6 +1,6 @@
-# CampBuddy
+# Loan Calculator
 
-[Live Demo](https://camp-buddy-soow.onrender.com/) 👈
+[Live Demo](https://amorizationtable.onrender.com/) 👈
 
 ## Description
 
