@@ -4,7 +4,7 @@
 
 ## Description
 
-A YelllowPages like website, but for camping. Users are able to register for accounts, add campgrounds, comment, and review campsites!
+A loan calculator website to help users better understand the impact of interest rates.
 
 ## Getting Started
 ```
